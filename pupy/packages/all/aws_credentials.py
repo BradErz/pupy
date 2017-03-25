@@ -21,7 +21,6 @@ class AWSCredentials:
             for profile in profiles:
                 self.creds_found.append(profile)
 
-
     def check_shared_creds_location(self):
         if os.environ.get('AWS_SHARED_CREDENTIALS_FILE'):
             self.full_path = os.path.expanduser(os.environ.get('AWS_SHARED_CREDENTIALS_FILE'))
