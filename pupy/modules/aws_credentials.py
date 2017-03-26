@@ -39,4 +39,4 @@ class AWSCredentials(PupyModule):
             self.error("Couldn't create the directory data/screenshots %s" % error)
 
         with open(path.join("data", "aws_creds", "creds.json"), 'w') as outfile:
-            json.dump(aws.creds_found, outfile)
+            json.dump(aws_creds.creds_found, outfile)
