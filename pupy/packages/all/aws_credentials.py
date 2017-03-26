@@ -8,7 +8,7 @@ class AWSCredentials:
         self.filename = "credentials"
         self.directory = "~/.aws"
         self.full_path = ""
-        self.creds_found = [] or None
+        self.creds_found = []
 
     def run(self):
         self.check_shared_creds_location()
@@ -18,8 +18,9 @@ class AWSCredentials:
 
         if os.path.exists(self.full_path) and os.path.getsize(self.full_path) > 0:
             profiles = self.check_creds_file()
-            for profile in profiles:
-                self.creds_found.append(profile)
+            if profiles:
+                for profile in profiles:
+                    self.creds_found.append(profile)
 
     def check_shared_creds_location(self):
         if os.environ.get('AWS_SHARED_CREDENTIALS_FILE'):
