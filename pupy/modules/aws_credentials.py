@@ -21,6 +21,9 @@ class AWSCredentials(PupyModule):
 
         if aws_creds.creds_found:
             for item in aws_creds.creds_found:
-                self.log("Found: " + item)
+                self.log("Profile Name: %s" % item['profile_name'])
+                self.log("Location: %s" % item['location'])
+                self.log("Access key ID: %s" % item['aws_access_key_id'])
+                self.log("Access secret key: %s" % item['aws_secret_access_key'])
         else:
             self.log("Couldn't find anything ;(")
