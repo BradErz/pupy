@@ -30,6 +30,8 @@ class AWSCredentials:
 
     def check_env_vars(self):
         if os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY'):
+            print("FROM SHELL: {aws_key} | {aws_sec_key}"
+                  .format(aws_key=os.getenv('AWS_ACCESS_KEY_ID'), aws_sec_key=os.getenv('AWS_SECRET_ACCESS_KEY') ))
             values = {}
             values['profile_name'] = ""
             values['location'] = "Found in shell environment"
