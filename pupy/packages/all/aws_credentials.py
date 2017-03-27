@@ -23,18 +23,18 @@ class AWSCredentials:
                     self.creds_found.append(profile)
 
     def check_shared_creds_location(self):
-        if os.environ.get('AWS_SHARED_CREDENTIALS_FILE'):
-            self.full_path = os.path.expanduser(os.environ.get('AWS_SHARED_CREDENTIALS_FILE'))
+        if os.getenv('AWS_SHARED_CREDENTIALS_FILE'):
+            self.full_path = os.path.expanduser(os.getenv('AWS_SHARED_CREDENTIALS_FILE'))
         else:
             self.full_path = os.path.expanduser(os.path.join(self.directory, self.filename))
 
     def check_env_vars(self):
-        if os.environ.get('AWS_ACCESS_KEY_ID') and os.environ.get('AWS_SECRET_ACCESS_KEY'):
+        if os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY'):
             values = {}
             values['profile_name'] = ""
             values['location'] = "Found in shell environment"
-            values['aws_access_key_id'] = os.environ.get('AWS_ACCESS_KEY_ID')
-            values['aws_secret_access_key'] = os.environ.get('AWS_SECRET_ACCESS_KEY')
+            values['aws_access_key_id'] = os.getenv('AWS_ACCESS_KEY_ID')
+            values['aws_secret_access_key'] = os.getenv('AWS_SECRET_ACCESS_KEY')
             return values
         else:
             return None
