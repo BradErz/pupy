@@ -44,5 +44,6 @@ class AWSCredentials(PupyModule):
 
     def write_to_file(self, data):
         with open(path.join("data", "aws_creds", "creds.json"), 'w') as outfile:
-            self.log("Writing creds data to file in data/aws_creds/creds.json")
+            self.log("-------------------------------------------")
+            self.log("\nWriting creds data to file in data/aws_creds/creds.json")
             json.dumps(data, outfile, sort_keys=True, indent=4, ensure_ascii=False)
