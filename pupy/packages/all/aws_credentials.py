@@ -71,7 +71,7 @@ class AWSCredentials:
         for section in config.sections():
             values = {}
             values['profile_name'] = section
-            values['location'] = "Found in crentials file ({full_path})".format(full_path=self.full_path)
+            values['location'] = "Found in credentials file ({full_path})".format(full_path=self.full_path)
             values['aws_access_key_id'] = config.get(section, "aws_access_key_id")
             values['aws_secret_access_key'] = config.get(section, "aws_secret_access_key")
             profiles.append(values)
