@@ -76,6 +76,7 @@ class screenshoter(PupyModule):
                 if not path.isdir(path.join("data", "screenshots")):
                     makedirs(path.join("data", "screenshots"))
             except Exception as error:
+                # If there is an error in this process it will be caught here and logged to the user.
                 self.error("Couldn't create the directory data/screenshots %s" % error)
 
             for screenshot in screenshots:
